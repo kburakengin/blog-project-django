@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+ <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Register</h1>
+            <span class="subheading">Register to create a blogpost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% include 'partials/_alerts.html' %}
+
+    <!-- Register Form -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p> Enter your information below to register! </p>
+        <form action="{% url 'register' %}" name="register" id="register" method="POST" novalidate>
+          {% csrf_token %}
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="name" id="name" required data-validation-required-message="Please enter your name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="form-control" name="email" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Username</label>
+              <input type="text" class="form-control" name="username" placeholder="Username" id="username" required data-validation-required-message="Please enter your username">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password" id="password" required data-validation-required-message="Please enter your password">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Confirm Password</label>
+              <input type="password" class="form-control" name="password2" placeholder="Confirm Password" id="password2" required data-validation-required-message="Please confirm your password">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+{% endblock %}

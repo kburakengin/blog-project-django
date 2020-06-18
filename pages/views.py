@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from .models import BlogPost
 
 
 # Create your views here.
 def index(request):
-    context = {}
+    posts = BlogPost.objects.all()
+    context = {
+        'posts': posts
+    }
     return render(request, 'pages/index.html', context)
 
 
