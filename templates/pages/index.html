@@ -33,7 +33,7 @@
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">{{ post.author }}</a>
+            <a href="{% url 'profile' %}">{{ post.author }}</a>
             on {{ post.date_posted|date:"F d, Y" }}</p>
         </div>
         {% endfor %}

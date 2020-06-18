@@ -72,10 +72,11 @@ def logout(request):
 
 @login_required
 def profile(request):
-    user_post = BlogPost.objects.order_by('-date_posted').filter(id=request.user.id)
+    user_post = BlogPost.objects.order_by('-date_posted').filter(author_id=request.user.id)
 
     context = {
-        'contacts': user_post
+        'user_post': user_post,
+
     }
 
     return render(request, 'users/profile.html', context)

@@ -4,7 +4,7 @@ from .models import BlogPost
 
 # Create your views here.
 def index(request):
-    posts = BlogPost.objects.all()
+    posts = BlogPost.objects.order_by('-date_posted')
     context = {
         'posts': posts
     }

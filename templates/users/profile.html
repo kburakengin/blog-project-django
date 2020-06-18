@@ -22,31 +22,41 @@
   {% include 'partials/_alerts.html' %}
 
 
-  <!-- Main Content
+  <!-- Main Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        {% for post in posts %}
+        {% if user_post %}
+          {% for post in user_post %}
+          <div class="post-preview">
+            <a href="#">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ post.subtitle }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">{{ post.author }}</a>
+              on {{ post.date_posted|date:"F d, Y" }}</p>
+          </div>
+          {% endfor %}
+        {% else %}
         <div class="post-preview">
-          <a href="#">
-            <h2 class="post-title">
-              {{ post.title }}
-            </h2>
-            <h3 class="post-subtitle">
-              {{ post.subtitle }}
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">{{ post.author }}</a>
-            on {{ post.date_posted|date:"F d, Y" }}</p>
+            <a href="#">
+              <h2 class="post-title">
+                No Posts Available By You
+              </h2>
+            </a>
         </div>
-        {% endfor %}
+        {% endif %}
       </div>
     </div>
   </div>
 
   <hr>
--->
+
 
 
 {% endblock %}
