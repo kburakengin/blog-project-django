@@ -11,4 +11,4 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 
-admin.site.register(BlogPost)
+admin.site.register(BlogPost, BlogPostAdmin)

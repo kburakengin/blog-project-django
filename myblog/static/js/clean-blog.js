@@ -39,3 +39,7 @@
   }
 
 })(jQuery); // End of use strict
+
+setTimeout(function() {
+    $('#message').fadeOut('slow');
+}, 3000);
