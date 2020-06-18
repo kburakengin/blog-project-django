@@ -130,7 +130,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'myblog/static')
 ]
 
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+LOGIN_URL = 'login'

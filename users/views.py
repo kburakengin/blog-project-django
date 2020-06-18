@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from pages.models import BlogPost
 
 
 # Create your views here.
@@ -66,3 +68,14 @@ def logout(request):
         return redirect('index')
     else:
         return redirect('index')
+
+
+@login_required
+def profile(request):
+    user_post = BlogPost.objects.order_by('-date_posted').filter(id=request.user.id)
+
+    context = {
+        'contacts': user_post
+    }
+
+    return render(request, 'users/profile.html', context)
