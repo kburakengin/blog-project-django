@@ -18,11 +18,11 @@ class Profile(models.Model):
         cover  = Image.open(self.cover_photo.path)
 
         if img.height > 300 or img.width > 300:
-            output_size = (300,300)
+            output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-        if cover.height > 700 or cover.width > 1000:
-            output_size = (500,900)
-            cover.thumnail(output_size)
+        elif cover.height > 1267 or cover.width > 1900:
+            output_size = (1267, 1900)
+            cover.thumbnail(output_size)
             cover.save(self.cover_photo.path)
