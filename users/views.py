@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from pages.models import BlogPost
+from blog.models import Post
 
 
 # Create your views here.
@@ -72,7 +72,7 @@ def logout(request):
 
 @login_required
 def profile(request):
-    user_post = BlogPost.objects.order_by('-date_posted').filter(author_id=request.user.id)
+    user_post = Post.objects.order_by('-date_posted').filter(author_id=request.user.id)
 
     context = {
         'user_post': user_post,

@@ -1,0 +1,46 @@
+{% extends 'base.html '%}
+{% load static %}
+{% block content %}
+    <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Welcome to my Blog Page</h1>
+            <span class="subheading">A Blog to Improve my Django Skills</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% include 'partials/_alerts.html' %}
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for post in posts %}
+        <div class="post-preview">
+          <a href="{% url 'post-detail' post.id %}">
+            <h2 class="post-title">
+              {{ post.title }}
+            </h2>
+            <h3 class="post-subtitle">
+              {{ post.subtitle }}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="{% url 'profile' %}">{{ post.author }}</a>
+            on {{ post.date_posted|date:"F d, Y" }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+{% endblock %}
