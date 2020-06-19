@@ -21,10 +21,12 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Create your blogpost</p>
-        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+        {% if 'update' in request.path %}
+          <p>Update your blogpost</p>
+        {% else %}
+          <p>Create your blogpost</p>
+        {% endif %}
+
         <form name="post-create" id="post-create"  method="POST" novalidate>
           {% csrf_token %}
           <div class="control-group">
