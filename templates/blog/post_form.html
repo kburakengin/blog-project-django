@@ -27,26 +27,28 @@
           <p>Create your blogpost</p>
         {% endif %}
 
+
+
         <form name="post-create" id="post-create"  method="POST" novalidate>
           {% csrf_token %}
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Title</label>
-              <input type="text" class="form-control" placeholder="Title" id="title" name="title" required data-validation-required-message="Please enter your title.">
+              <input type="text" class="form-control" value="{{ post.title }}" placeholder="Title"id="title" name="title" required data-validation-required-message="Please enter your title.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Subtitle</label>
-              <input type="text" class="form-control" placeholder="Subtitle" id="subtitle" name="subtitle" required data-validation-required-message="Please enter your subtitle.">
+              <input type="text" class="form-control" value="{{ post.subtitle }}" placeholder="Subtitle" id="subtitle" name="subtitle" required data-validation-required-message="Please enter your subtitle.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Content</label>
-              <textarea rows="5" class="form-control" placeholder="Post Content" id="content" name="content" required data-validation-required-message="Please enter your content."></textarea>
+              <textarea rows="5" class="form-control" placeholder="Post Content" id="content" name="content" required data-validation-required-message="Please enter your content.">{{ post.content }}</textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>

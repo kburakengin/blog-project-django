@@ -43,25 +43,22 @@
           </div>
           {% endfor %}
         {% else %}
-        <div class="post-preview">
-            <a href="#">
               <h2 class="post-title">
                 No Posts Available By You
               </h2>
-            </a>
-        </div>
         {% endif %}
       </div>
+        <div class="container">
+         <a href="{% url 'update-profile' %}" class="btn btn-secondary btn-sm float-right">Update Profile Info</a>
+        </div>
     </div>
   </div>
 
-  <hr>
 
-  <div class="container">
-    <a href="{% url 'update-profile' %}" class="btn btn-secondary btn-sm float-right">Update Profile Info</a>
-  </div>
 
   <hr>
+
+
 
 
 {% endblock %}

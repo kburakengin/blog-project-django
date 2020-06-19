@@ -141,3 +141,5 @@ MESSAGE_TAGS = {
 }
 
 LOGIN_URL = 'login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
