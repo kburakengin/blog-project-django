@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+      <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ user.profile.cover_photo.url }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+              <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle account-img">
+            <h1>{{ user.username }}</h1>
+            <h2>{{ user.email }}</h2>
+            <span class="subheading">Profile Page</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% include 'partials/_alerts.html' %}
+
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p> Enter update information! </p>
+        <form action="{% url 'update-profile' %}" name="update-profile" id="update" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            {{ u_form|crispy }}
+          <br>
+            {{ p_form|crispy }}
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-secondary" id="updateProfileButton">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+{% endblock %}

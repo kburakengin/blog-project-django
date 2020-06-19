@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from blog.models import Post
+from .forms import UserUpdateForm, ProfileUpdateForm
 
 
 # Create your views here.
@@ -74,9 +75,28 @@ def logout(request):
 def profile(request):
     user_post = Post.objects.order_by('-date_posted').filter(author_id=request.user.id)
 
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+
     context = {
         'user_post': user_post,
+        'u_form': u_form,
+        'p_form': p_form,
 
     }
 
     return render(request, 'users/profile.html', context)
+
+
+def update_profile(request):
+    user = User.objects.all().filter(id=request.user.id).first()
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'user': user
+    }
+
+    return render(request, 'users/update_profile.html', context)
