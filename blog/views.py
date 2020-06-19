@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView, UpdateView)
+    CreateView, UpdateView, DeleteView)
 from .models import Post
 
 
@@ -35,7 +35,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'subtitle', 'content']
 
@@ -43,17 +43,31 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
 
 def about(request):
-    context = {}
-    return render(request, 'blog/about.html', context)
+    return render(request, 'blog/about.html')
 
 
-def posts(request):
-    context = {}
+def latest_post(request):
+    latest_post = Post.objects.all().last()
+    context = {
+        'latest_post': latest_post
+    }
     return render(request, 'blog/posts.html', context)
-
-
-def contact(request):
-    context = {}
-    return render(request, 'blog/contact.html', context)

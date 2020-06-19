@@ -28,24 +28,23 @@
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
           <li
-            {% if 'posts' in request.path %}
+            {% if 'latest' in request.path %}
               class="nav-item active mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
           >
-            <a class="nav-link" href="{% url 'posts' %}">Posts</a>
+            <a class="nav-link" href="{% url 'latest_post' %}">Latest Post</a>
           </li>
-          <li
-            {% if 'contact' in request.path %}
+          {% if user.is_authenticated %}
+            <li
+            {% if 'new' in request.path %}
                 class="nav-item active mr-3"
               {% else %}
                 class="nav-item mr-3"
               {% endif %}
           >
-            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-          </li>
-          {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'post-create' %}">New Post</a>
             <li
               {% if 'profile' in request.path %}
                 class="nav-item active mr-3"

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{% static 'img/about-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>{{ object.title }}</h1>
+            <span class="subheading">Delete Post</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <form name="post-create" id="post-create"  method="POST" novalidate>
+          {% csrf_token %}
+            <h4>Are you you want to delete the post "{{ object.title }}"</h4>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-danger" id="addPostButton">DELETE</button>
+            <a class="btn btn-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+{% endblock %}

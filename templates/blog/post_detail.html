@@ -34,9 +34,18 @@
             </p>
         </div>
       </div>
+
     </div>
   </div>
 
   <hr>
 
+  {% if object.author == user %}
+    <div class="container">
+      <a class="btn btn-danger btn-sm float-right" href="{% url 'post-delete' object.id %}">DELETE</a>
+      <a class="btn btn-secondary btn-sm float-right" href="{% url 'post-update' object.id %}">UPDATE</a>
+
+    </div>
+
+  {% endif %}
 {% endblock %}
