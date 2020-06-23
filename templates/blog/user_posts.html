@@ -8,8 +8,8 @@
       <div class="row">
         <div class="col-lg-10 col-md-12 mx-auto">
           <div class="site-heading">
-            <h1>Welcome to KBE Blog</h1>
-            <span class="subheading">A Blog to Share Everything! </span>
+            <h1>Posts by {{ view.kwargs.username }}</h1>
+            <span class="subheading">( {{ page_obj.paginator.count }}  Posts Available )</span>
           </div>
         </div>
       </div>
