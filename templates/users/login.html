@@ -39,6 +39,9 @@
             <div class="form-group col-xs-12 floating-label-form-group controls">
               <label>Password</label>
               <input type="password" class="form-control" name="password" placeholder="Password" id="password" required data-validation-required-message="Please enter your password">
+              <small class="text-muted">
+                <a class="ml-2" href="{% url 'password_reset' %}">Forgot Password?</a>
+              </small>
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -47,6 +50,9 @@
           <div class="form-group">
             <button type="submit" class="btn btn-primary" id="sendMessageButton">Login</button>
           </div>
+          <div class="border-top pt-3">
+
+        </div>
         </form>
       </div>
     </div>
