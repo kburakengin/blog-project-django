@@ -5,7 +5,7 @@
   It's deployed on Heroku and for the profile and cover photos, it's using AWS S3 Bucket.
 
   
-## App is on Heroku
+## App is deployed on Heroku
 ```bash
 $ go to https://kbedjangoblogapp.herokuapp.com/
 ```
