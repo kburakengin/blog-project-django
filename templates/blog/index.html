@@ -23,8 +23,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         {% for post in posts %}
+        <img class="rounded-circle div-img float-left" src="{{ post.author.profile.image.url }}" width="200" height="200">
         <div class="post-preview">
-          <img class="rounded-circle article-img float-left" src="{{ post.author.profile.image.url }}" width="300" height="300">
           <a href="{% url 'post-detail' post.id %}">
             <h2 class="post-title">
               {{ post.title }}
