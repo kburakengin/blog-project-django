@@ -34,7 +34,7 @@
               {{ post.subtitle }}
             </h3>
           </a>
-          <p class="article-metadata">Posted by
+          <p class="post-meta">Posted by
             <a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
             on {{ post.date_posted|date:"F d, Y" }}</p>
         </div>
