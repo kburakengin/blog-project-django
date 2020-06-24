@@ -23,20 +23,22 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         {% for post in posts %}
-        <img class="rounded-circle div-img float-left" src="{{ post.author.profile.image.url }}" width="200" height="200">
-        <div class="post-preview">
+        <article class="media content-section">
+        <img class="rounded-circle div-img mr-3" src="{{ post.author.profile.image.url }}" width="50" height="50">
+        <div class="post-preview media-body">
           <a href="{% url 'post-detail' post.id %}">
-            <h2 class="post-title">
+            <h2 class="article-title">
               {{ post.title }}
             </h2>
             <h3 class="post-subtitle">
               {{ post.subtitle }}
             </h3>
           </a>
-          <p class="post-meta">Posted by
+          <p class="article-metadata">Posted by
             <a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
             on {{ post.date_posted|date:"F d, Y" }}</p>
         </div>
+        </article>
         {% endfor %}
         {% if is_paginated %}
 
