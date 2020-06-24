@@ -26,7 +26,7 @@ SECRET_KEY = '331j(%+(46lc$eyff-)e(e93)h*j0*j7ojr6+j@z&yugci5*qg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kbedjangoblogapp.herokuapp.com']
 
 
 # Application definition
