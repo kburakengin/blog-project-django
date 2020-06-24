@@ -24,7 +24,7 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         {% for post in posts %}
         <div class="post-preview">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <img class="rounded-circle article-img float-left" src="{{ post.author.profile.image.url }}" width="300" height="300">
           <a href="{% url 'post-detail' post.id %}">
             <h2 class="post-title">
               {{ post.title }}
